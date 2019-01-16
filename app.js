@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
+app.use(express.static('public'))
 const port = 3000;
 
 const hbsFileContent = fs.readFileSync(path.join(process.cwd(), 'index.hbs'), 'utf8');
