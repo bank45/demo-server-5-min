@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <title>{{title}}</title>
 </head>
@@ -48,16 +49,50 @@
     <h1>{{title}}</h1>
     <p>{{body}}</p>
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm my-cat">
             <img src="img/cat1.jpg" class="img-fluid" alt="Responsive image">
         </div>
-        <div class="col-sm">
+        <div class="col-sm my-cat">
             <img src="img/cat2.jpg" class="img-fluid" alt="Responsive image">
         </div>
-        <div class="col-sm">
+        <div class="col-sm my-cat">
             <img src="img/cat3.jpg" class="img-fluid" alt="Responsive image">
         </div>
     </div>
+    <div class="my-class">
+        <h2>All Cats</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each cats}}
+                <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.age}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <h2>Add New Cat</h2>
+    <form action="/cats" method="post">
+        <div class="form-group">
+            <label for="inputCatName">Cat Name</label>
+            <input name="catName" type="text" class="form-control" id="inputCatName" placeholder="Enter Cat Name">
+        </div>
+        <div class="form-group">
+            <label for="inputCatAge">Age</label>
+            <input name="catAge" type="text" class="form-control" id="inputCatAge" aria-describedby="catAgeHelp"  placeholder="Cat Age">
+            <small id="catAgeHelp" class="form-text text-muted">Enter cat's age in years</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
